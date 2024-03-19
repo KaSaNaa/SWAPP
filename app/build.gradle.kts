@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.retardeddev.swapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.retardeddev.swapp"
