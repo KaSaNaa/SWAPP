@@ -4,19 +4,18 @@ import com.retardeddev.swapp.dataModel.CME
 import com.retardeddev.swapp.dataModel.CMEAnalysis
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NasaApiService {
 
-    @GET("DONKI/WS/get/CME")
+    @GET("CME")
     suspend fun fetchCMEs(
         @Query("startDate") startDate: String,
         @Query("endDate") endDate: String
     ): List<CME>
 
-    @GET("DONKI/WS/get/CMEAnalysis")
+    @GET("CMEAnalysis")
     suspend fun fetchCMEAnalysis(
         @Query("startDate") startDate: String,
         @Query("endDate") endDate: String,
@@ -27,7 +26,6 @@ interface NasaApiService {
         @Query("catalog") catalog: String = "ALL"
     ): List<CMEAnalysis>
 }
-
 
 object NasaApiClient {
     private const val BASE_URL = "https://kauai.ccmc.gsfc.nasa.gov/DONKI/WS/get/"
