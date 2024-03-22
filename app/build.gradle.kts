@@ -55,7 +55,8 @@ dependencies {
 // Retrofit with Scalar Converter
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.7.1")
-    implementation ("androidx.compose.runtime:runtime-livedata:1.7.0-alpha05")
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.0-alpha05")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
