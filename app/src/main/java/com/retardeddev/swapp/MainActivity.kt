@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -47,6 +48,8 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 fun App(viewModel: DashboardViewModel) {
+    val (showMarsPhotos, setShowMarsPhotos) = remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -68,16 +71,18 @@ fun App(viewModel: DashboardViewModel) {
                     modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        text = "Bottom Bar",
-                        color = Color.Black,
-                        textAlign = TextAlign.Center,
-                    )
+                    Button(onClick = { setShowMarsPhotos(true) }) {
+                        Text("Load Mars Photos")
+                    }
                 }
             }
         },
         content = {
-            ContentBox(viewModel)
+            if (showMarsPhotos) {
+                MarsPhotosApp()
+            } else {
+                ContentBox(viewModel)
+            }
         }
     )
 }

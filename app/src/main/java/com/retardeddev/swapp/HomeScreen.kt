@@ -25,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.retardeddev.swapp.MarsPhotosApp.R
 import com.retardeddev.swapp.R
 import com.retardeddev.swapp.ui.theme.MarsPhotosTheme
 
@@ -55,6 +54,6 @@ fun ResultScreen(photos: String, modifier: Modifier = Modifier) {
 @Composable
 fun ResultScreenPreview() {
     MarsPhotosTheme {
-        ResultScreen(stringResource(R.string.))
+        ResultScreen(stringResource(R.string.app_name))
     }
 }
