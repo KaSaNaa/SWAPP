@@ -27,11 +27,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.retardeddev.swapp.R
+import com.retardeddev.swapp.api.MarsPhoto
 import com.retardeddev.swapp.pages.MarsUiState
 import com.retardeddev.swapp.ui.theme.MarsPhotosTheme
 
@@ -41,15 +45,11 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
     when (marsUiState) {
-        is MarsUiState.Loading -> LoadingScreen( modifier = modifier.fillMaxSize())
-        is MarsUiState.Success -> ResultScreen(
-            photos = marsUiState.photos,
-            modifier = modifier.fillMaxWidth()
-        )
-        is MarsUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
+        is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
+        is MarsUiState.Success -> MarsPhotoCard(photo = marsUiState.photos, modifier = modifier.fillMaxSize())
+        else -> ErrorScreen(modifier = modifier.fillMaxSize())
     }
 }
-
 @Composable
 fun LoadingScreen( modifier: Modifier = Modifier) {
     Image(
@@ -93,4 +93,18 @@ fun ResultScreenPreview() {
     MarsPhotosTheme {
         ResultScreen(stringResource(R.string.app_name))
     }
+}
+
+@Composable
+fun MarsPhotoCard(photo: MarsPhoto, modifier: Modifier = Modifier) {
+    AsyncImage(
+        model = ImageRequest.Builder(context = LocalContext.current)
+            .data(photo.imgSrc)
+            .crossfade(true)
+            .build(),
+        contentDescription = stringResource(R.string.mars_photo),
+        error = painterResource(R.drawable.ic_broken_image),
+        placeholder = painterResource(R.drawable.loading_img),
+        modifier = Modifier.fillMaxWidth()
+    )
 }

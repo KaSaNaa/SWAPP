@@ -21,11 +21,12 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.retardeddev.swapp.api.MarsApi
+import com.retardeddev.swapp.api.MarsPhoto
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 sealed interface MarsUiState {
-    data class Success(val photos: String) : MarsUiState
+    data class Success(val photos: MarsPhoto) : MarsUiState
     object Error : MarsUiState
     object Loading : MarsUiState
 }
@@ -49,8 +50,7 @@ class MarsViewModel : ViewModel() {
     fun getMarsPhotos() {
         viewModelScope.launch {
             marsUiState = try {
-                val listResult = MarsApi.retrofitServiceMars.getPhotos()
-                MarsUiState.Success(listResult)
+                MarsUiState.Success(MarsApi.retrofitServiceMars.getPhotos()[0])
             }catch (e: IOException){
                 MarsUiState.Error
             }
