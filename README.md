@@ -25,7 +25,7 @@ While we are in the initial stages of development, here are some ideas we're con
 
 As development progresses, we'll update this section with instructions on how to install and run SWAPP on your mobile device or emulator. Stay tuned for further updates!
 
-## Contributing
+## Contributing [Not yet available for this repo]
 
 We welcome contributions from the community to help improve SWAPP! Whether it's fixing bugs, implementing new features, or providing feedback on the user experience, your contributions are valuable. Please refer to the CONTRIBUTING.md file for guidelines on how to contribute.
 
