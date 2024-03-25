@@ -19,6 +19,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -107,4 +108,13 @@ fun MarsPhotoCard(photo: MarsPhoto, modifier: Modifier = Modifier) {
         placeholder = painterResource(R.drawable.loading_img),
         modifier = Modifier.fillMaxWidth()
     )
+}
+
+@Composable
+fun MarsPhotosGridScreen(
+    photos: List<MarsPhoto>,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp)
+) {
+
 }
