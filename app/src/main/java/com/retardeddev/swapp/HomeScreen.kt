@@ -125,7 +125,7 @@ fun MarsPhotosGridScreen(
         contentPadding = contentPadding
     ){
         items(items = photos, key = {photo -> photo.id}){
-
+            photo -> MarsPhotoCard(photo)
         }
     }
 }
