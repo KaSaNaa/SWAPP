@@ -50,7 +50,7 @@ fun HomeScreen(
 ) {
     when (marsUiState) {
         is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-        is MarsUiState.Success -> MarsPhotoCard(photo = marsUiState.photos, modifier = modifier.fillMaxSize())
+        is MarsUiState.Success -> MarsPhotosGridScreen(marsUiState.photos, modifier)
         else -> ErrorScreen(modifier = modifier.fillMaxSize())
     }
 }
